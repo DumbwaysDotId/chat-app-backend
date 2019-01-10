@@ -10,6 +10,20 @@ class UserController {
         return user
     }
 
+    async login({ request, auth }){
+        const email = request.input('email')
+        const password = request.input('password')
+
+        const user = await User.query().where('email', email).first()    
+        const authentication = await auth.attempt(email, password)        
+
+        return {
+            ...authentication,
+            user
+        }
+        
+    }
+
 }
 
 module.exports = UserController
