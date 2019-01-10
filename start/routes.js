@@ -23,9 +23,9 @@ Route.get('/', () => {
 Route.post('register', 'UserController.register')
 Route.post('login', 'UserController.login')
 
-Route.get('contacts', 'ContactController.index')
+Route.get('contacts', 'ContactController.index').middleware('auth')
 
-Route.get('channels', 'ChannelController.index')
-Route.get('channel/:id/messages', 'ChannelController.messages')
+Route.get('channels', 'ChannelController.index').middleware('auth')
+Route.get('channel/:id/messages', 'ChannelController.messages').middleware('auth')
 
-Route.post('message', 'MessageController.store')
+Route.post('message', 'MessageController.store').middleware('auth')
