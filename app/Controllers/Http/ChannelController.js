@@ -10,8 +10,10 @@ class ChannelController {
   }
 
   async messages ({ params }){
-    return Message.query()
-    .where('channel_id', params.id)
+    return Message
+    .query()    
+    .where('channel_id', params.id)    
+    .with('user')
     .fetch()
   }
 

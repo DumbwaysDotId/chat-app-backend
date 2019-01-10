@@ -20,6 +20,8 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
+Route.post('register', 'UserController.register')
+
 Route.get('contacts', 'ContactController.index')
 
 Route.get('channels', 'ChannelController.index')
