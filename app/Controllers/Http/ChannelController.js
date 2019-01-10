@@ -11,9 +11,14 @@ class ChannelController {
 
   async messages ({ params }){
     return Message
-    .query()    
+    .query() 
+    .select('*')
+    .select('id as _id')   
     .where('channel_id', params.id)    
-    .with('user')
+    .with('user', (builder)=> {
+      builder.select('*').select('id as _id')
+    })
+    .orderBy('id', 'DESC')
     .fetch()
   }
 

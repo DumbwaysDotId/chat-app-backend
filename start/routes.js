@@ -26,3 +26,5 @@ Route.get('contacts', 'ContactController.index')
 
 Route.get('channels', 'ChannelController.index')
 Route.get('channel/:id/messages', 'ChannelController.messages')
+
+Route.post('message', 'MessageController.store')
